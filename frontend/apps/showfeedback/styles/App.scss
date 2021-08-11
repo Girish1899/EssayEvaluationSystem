@@ -1,0 +1,60 @@
+$nav-logo-max-width: 160px;
+$nav-logo-max-height: 32px;
+.showfeedbackApp {
+  min-height: 100vh !important;
+  :global {
+    .logo {
+      float: left;
+    }
+    .logout {
+      float: right;
+    }
+    .logo-img {
+      max-width: $nav-logo-max-width;
+      max-height: $nav-logo-max-height;
+      width: auto;
+      height: auto;
+    }
+    .accordion-button
+    { background: rgb(229 225 225 / 97%) !important; }
+    .accordion-button:not(.collapsed) {
+      color: black !important;
+    }
+    #MainCard
+    {
+      background:#f0f2f5;
+    }
+    #listItemId
+    {
+        margin: 2%;
+        background: white;
+        display: block;
+        padding: 2%
+    }
+    #previouslistItemId
+    {
+      background: white;
+      display: block;
+    }
+    #PreviousDiv
+    {
+      margin: 2%;
+      background: white;
+      display: block;
+      padding: 2%;
+    }
+    #essayTittle
+    {
+      margin-left:2%;
+      flex: 0 0 85%;
+    }
+    #headerDiv
+    {
+      display:flex;
+      padding: 1%;
+      background: white;
+      border-bottom: 1px solid black;
+    }
+  }
+
+}

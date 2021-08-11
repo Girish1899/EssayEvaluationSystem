@@ -1,0 +1,65 @@
+$nav-logo-max-width: 160px;
+$nav-logo-max-height: 32px;
+.platformApp {
+  min-height: 100vh !important;
+  :global {
+    .logo {
+      float: left;
+    }
+    .logout {
+      float: right;
+    }
+    .logo-img {
+      max-width: $nav-logo-max-width;
+      max-height: $nav-logo-max-height;
+      width: auto;
+      height: auto;
+    }
+    .ant-list-item-meta-title
+  {
+    color: #2aa3a8 !important;
+    text-transform: capitalize !important;
+    font-weight: 700 !important;
+  }
+  .ant-list-split .ant-list-item {
+    border: 1px solid #dadce0 !important;
+    border-radius:8px !important;
+    padding:2% !important;
+    overflow:hidden;
+    margin:2% !important;
+}
+.ant-card-bordered 
+{
+  border: 1px solid #dadce0 !important;
+    border-radius:8px !important;
+    padding:2% !important;
+    overflow:hidden;
+    margin:2% !important;
+}
+#cardheader
+{
+  color: #2aa3a8 !important;
+  text-transform: capitalize !important;
+  font-weight: 700 !important;
+}
+#cardcontent
+{
+  color:black;
+}
+.nav-link.active {
+  color: #2aa3a8 !important;
+  }
+  .nav-link {
+    color: black !important;
+    }
+    #cardBox
+    {
+      display: none;
+    }
+    #buttonToCreate
+    {
+      background: #2aa3a8;
+      border: 1px solid white;
+    }
+} 
+}
