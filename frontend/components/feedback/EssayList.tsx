@@ -80,7 +80,7 @@ export const EssayList = () => {
           return (
             <List.Item onClick={() => showRequest(essay.pk)}>
               <Check2Circle color="green" size={32} id="iconStatus"/>
-              <List.Item.Meta title={essay.name}/>]
+              <List.Item.Meta title={essay.name}/>
               {tag}...
             </List.Item>
           )
