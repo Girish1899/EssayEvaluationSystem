@@ -50,11 +50,10 @@ export const EssayList = () => {
       <div className="row">
         <div className="col-lg-8">
         <Tabs
-  defaultActiveKey="All"
-  transition={false}
-  id="noanim-tab-example"
-  className="mb-3"
->
+          defaultActiveKey="All"
+          transition={false}
+          id="noanim-tab-example"
+          className="mb-3">
   <Tab eventKey="All" title="All">
 
   <label htmlFor="header-search">
@@ -169,9 +168,9 @@ export const EssayList = () => {
         <div className="col-lg-4" id="cardBox">
           <Card id="DetailBox">
             <h6>Essay Preview</h6><br/>
-<h4 id="cardheader"></h4><br/>
-<p id="cardcontent"></p>
-<Button onClick={moveToCreate} id="buttonToCreate">Create Feedback</Button>
+            <h4 id="cardheader"></h4><br/>
+            <p id="cardcontent"></p>
+            <Button onClick={moveToCreate} id="buttonToCreate">Create Feedback</Button>
           </Card>
         </div>
         </div>
@@ -188,11 +187,10 @@ export const EssayList = () => {
   function showRequest(id:any)
   {
     selectedEssay=[];
-selectedEssay=essays[id]
-console.log("essays",selectedEssay);
-document.querySelector('#cardheader')?.innerHTML= selectedEssay.name;
-document.querySelector('#cardcontent')?.innerHTML= selectedEssay.name;
-document.querySelector('#cardBox')?.style.display='block';
+    selectedEssay=essays[id]
+    document.querySelector('#cardheader')?.innerHTML= selectedEssay.name;
+    document.querySelector('#cardcontent')?.innerHTML= selectedEssay.name;
+    document.querySelector('#cardBox')?.style.display='block';
 
   }
 
