@@ -13,7 +13,6 @@ export const loadFeedbackRequests = () => async (dispatch: Dispatch) => {
   try {
     const { data: frrs }: { data: FeedbackRequestRetrieve[] } = await API.get(Urls.FeedbackRequest())
     const allFeedbackRequests: FeedbackRequest[] = []
-    console.log("dataplatfomr",frrs)
     const allEssays: Essay[] = []
     frrs.forEach(frr => {
       const { essay, ...frrDestructured } = frr
