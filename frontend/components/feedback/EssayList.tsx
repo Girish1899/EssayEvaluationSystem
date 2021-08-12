@@ -125,7 +125,7 @@ export const EssayList = () => {
           const essay = essays[item.essay]
           var tag = essay.content
           tag=tag.substring(0, 80);
-          if(item.feedback!="")
+          if((item.feedback!="")&& (item.assigned_editors.length > 0))
           {
           return (
             <List.Item onClick={() => showRequest(essay.pk)}>
