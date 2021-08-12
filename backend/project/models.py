@@ -70,3 +70,11 @@ class FeedbackRequest(models.Model):
 	#a field to store essay given by essay
 	essay_Given_By_Student = models.CharField(default="Essay...",max_length=500)
 	deadline = models.DateTimeField()
+	#A flag variable to push the editors to complete the feedback before picking up another essay for review.
+	feedBack_Status= models.BooleanField(
+		default=False,
+		help_text='If True, the request has been seen by a editor. Otherwise,' +
+		' the request is still in the queue yet to be reviewed'
+	)
+
+
