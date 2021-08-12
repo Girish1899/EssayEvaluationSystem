@@ -40,10 +40,10 @@ class PlatformView(views.APIView):
 
 	def get(self, *args, **kwargs):
 		#####to check if the editor logged in has essay review requested that was not completed
-		checkForRequets = FeedbackRequest.objects.filter(assigned_editors=self.request.user,edited=True,feedback__exact="").count() 
+		checkForRequets = FeedbackRequest.objects.filter(assigned_editors=self.request.user,feedBack_Status=True,feedback__exact="").count() 
 		if checkForRequets>0:
 			####if he has any incomplete request left he has to complete it and then move ahead 
-			IdOfTheRequest = FeedbackRequest.objects.filter(assigned_editors=self.request.user,edited=True,feedback__exact="").values()
+			IdOfTheRequest = FeedbackRequest.objects.filter(assigned_editors=self.request.user,feedBack_Status=True,feedback__exact="").values()
 			return redirect('/showfeedback/'+str(IdOfTheRequest[0]['essay_id'])+'/')
 		else:
 			###else can move ahead to check his dashboard
@@ -90,14 +90,17 @@ class FeedbackRequestDetailViewSet(viewsets.GenericViewSet, mixins.ListModelMixi
 	permission_classes = (IsAuthenticated,)
 
 	def get_queryset(self):
-		FeedbackRequest.objects.filter(essay=self.kwargs['id']).update(edited=True)
+		userObj  = User.objects.filter(username=self.request.user).values()
+		FeedbackRequest.objects.filter(essay=self.kwargs['id']).update(feedBack_Status=True)
+		FeedbackRequest.objects.filter(essay=self.kwargs['id']).last().assigned_editors.add(userObj[0]['id'])
 		return FeedbackDetail.query_for_user(id=self.kwargs['id']).select_related('essay')
 
 class createFeedBack(views.APIView):
 	""" View to create feedback. """
 
 	def post(self, request, *args, **kwargs):
-		FeedbackRequest.objects.filter(essay=request.data.get('EId'),edited=True).update(feedback=request.data.get('Efeedback'))
+		latestFeedBack = FeedbackRequest.objects.filter(essay=request.data.get('EId'),feedBack_Status=True).values().last()
+		FeedbackRequest.objects.filter(id=latestFeedBack['id'],feedBack_Status=True,essay=request.data.get('EId'),).update(feedback=request.data.get('Efeedback'))
 		return Response(status=status.HTTP_201_CREATED)
 
 
