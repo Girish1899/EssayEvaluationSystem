@@ -7,7 +7,7 @@ from rest_framework import status
 from rest_framework import mixins
 from rest_framework.permissions import IsAuthenticated
 from rest_framework.response import Response
-from project.models import FeedbackRequest,Essay
+from project.models import FeedbackRequest,Essay,User
 from django.http import JsonResponse
 from project.serializers import EssaySerializer, FeedbackRequestSerializer
 from project.utilities import FeedbackRequestManager,FeedbackDetail
