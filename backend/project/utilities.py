@@ -12,6 +12,8 @@ class FeedbackRequestManager:
 			Includes those that are finished if requested. Otherwise, includes only unfinished. 
 		"""
 		queryset = FeedbackRequest.objects.filter(Q(assigned_editors=user) | Q(assigned_editors__isnull=True))
+		if not include_edited:
+			queryset = queryset.filter(edited=False)
 		return queryset
 
 class FeedbackDetail:
