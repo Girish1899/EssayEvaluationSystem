@@ -10,6 +10,11 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import { Button, Tab, Tabs } from 'react-bootstrap'
 import { User, UserState } from 'store/user/userTypes'
 import {  FormControl } from 'react-bootstrap';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import {ArrowRight} from 'react-bootstrap-icons'
+import { Check2Circle } from 'react-bootstrap-icons'
+import { HourglassSplit } from 'react-bootstrap-icons'
+import { PlusCircle } from 'react-bootstrap-icons'
 var selectedEssay:any =[];
 
 
@@ -71,12 +76,32 @@ export const EssayList = () => {
           const essay = essays[item.essay]
           var tag = essay.content
           tag=tag.substring(0, 80);
+          if((item.feedback!="") && (item.assigned_editors.length>0))
+          {
           return (
             <List.Item onClick={() => showRequest(essay.pk)}>
-              <List.Item.Meta title={essay.name}/>
+              <Check2Circle color="green" size={32} id="iconStatus"/>
+              <List.Item.Meta title={essay.name}/>]
               {tag}...
             </List.Item>
           )
+          }
+          else if((item.feedback=="") && (item.assigned_editors.length>0))
+          {
+            return( <List.Item onClick={() => showRequest(essay.pk)}>
+            <HourglassSplit color="orange" size={32} id="iconStatus"/>
+            <List.Item.Meta title={essay.name}/>
+            {tag}...
+          </List.Item>)
+          }
+          else 
+          {
+            return( <List.Item onClick={() => showRequest(essay.pk)}>
+            <PlusCircle color="grey" size={32}  id="iconStatus"/>
+            <List.Item.Meta title={essay.name}/>
+            {tag}...
+          </List.Item>)
+          }
         }} />
   </Tab>
   <Tab eventKey="New" title="New" >
@@ -91,6 +116,7 @@ export const EssayList = () => {
           {
           return (
             <List.Item onClick={() => showRequest(essay.pk)}>
+            <PlusCircle color="grey" size={32}  id="iconStatus"/>
               <List.Item.Meta title={essay.name}/>
               {tag}...
             </List.Item>
@@ -106,10 +132,11 @@ export const EssayList = () => {
           const essay = essays[item.essay]
           var tag = essay.content
           tag=tag.substring(0, 80);
-          if(item.assigned_editors.length>0)
+          if((item.feedback=="") && (item.assigned_editors.length>0))
           {
           return (
             <List.Item onClick={() => showRequest(essay.pk)}>
+            <HourglassSplit color="orange" size={32} id="iconStatus"/>
               <List.Item.Meta title={essay.name}/>
               {tag}...
             </List.Item>
@@ -125,10 +152,11 @@ export const EssayList = () => {
           const essay = essays[item.essay]
           var tag = essay.content
           tag=tag.substring(0, 80);
-          if((item.feedback!="")&& (item.assigned_editors.length > 0))
+          if((item.feedback!="") && (item.assigned_editors.length>0))
           {
           return (
             <List.Item onClick={() => showRequest(essay.pk)}>
+            <Check2Circle color="green" size={32} id="iconStatus"/>
               <List.Item.Meta title={essay.name}/>
               {tag}...
             </List.Item>
