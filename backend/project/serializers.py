@@ -25,6 +25,6 @@ class FeedbackRequestSerializer(serializers.ModelSerializer):
 
 	class Meta:
 		model = FeedbackRequest
-		fields = ('pk', 'essay', 'edited', 'deadline','feedback','feedback_Created_Date','essay_Given_By_Student','assigned_editors')
+		fields = ('pk', 'essay', 'edited', 'deadline','feedback','essay_Given_By_Student','assigned_editors')
 
 
