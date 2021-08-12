@@ -1,5 +1,5 @@
 # EssayEvaluationSystem
-Note: Please run "npm install react-bootstrap-icons --save", before starting the project.
+Note: Please run "npm install react-bootstrap-icons --save", before starting the frontend project.
 
 ----------------------------------------------------------------------------------------------------------------------------
 Essay_Feedback_System
