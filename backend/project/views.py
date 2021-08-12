@@ -40,12 +40,11 @@ class PlatformView(views.APIView):
 
 	def get(self, *args, **kwargs):
 		#####to check if the editor logged in has essay review requested that was not completed
-		checkForRequets = FeedbackRequest.objects.filter(assigned_editors=self.request.user,edited=True,feedback="").count() 
+		checkForRequets = FeedbackRequest.objects.filter(assigned_editors=self.request.user,edited=True,feedback__exact="").count() 
 		if checkForRequets>0:
 			####if he has any incomplete request left he has to complete it and then move ahead 
-			IdOfTheRequest = FeedbackRequest.objects.filter(assigned_editors=self.request.user,edited=True).values()
-			print("remaining req",IdOfTheRequest)
-			return redirect('/showfeedback/'+str(IdOfTheRequest[0]['id'])+'/')
+			IdOfTheRequest = FeedbackRequest.objects.filter(assigned_editors=self.request.user,edited=True,feedback__exact="").values()
+			return redirect('/showfeedback/'+str(IdOfTheRequest[0]['essay_id'])+'/')
 		else:
 			###else can move ahead to check his dashboard
 			return render(self.request, 'project/platform.html', {})
