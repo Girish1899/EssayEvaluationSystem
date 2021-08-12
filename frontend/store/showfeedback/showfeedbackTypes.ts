@@ -12,7 +12,6 @@ export type FeedbackRequest = {
   edited: boolean
   deadline: string
   feedback:string
-  feedback_Created_Date:string
   essay_Given_By_Student:string
 }
 
